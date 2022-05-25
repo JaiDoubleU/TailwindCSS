@@ -16,12 +16,15 @@ body > .content {
 	width: 65px;
 }
 
+/* 	Buttons */
 button {
 	@apply font-normal rounded-sm py-1 px-4;
 }
+
 button.small {
 	@apply font-normal rounded-sm py-0 px-2;
 }
+
 button.large {
 	@apply font-normal rounded-sm py-2 px-4;
 }
@@ -61,6 +64,8 @@ button.red:hover {
 	@apply text-white bg-danger-DEFAULT; 
 }
 
+/* 	Inputs */
+
 input {
 	@apply px-3 py-1 pr-10 text-neutrals-white bg-neutrals-gray4 border-neutrals-gray5 rounded border  shadow outline-none  w-full;
 }
@@ -68,9 +73,10 @@ input {
 	@apply pl-10 py-2;
 }
 
-input::placeholde,
-input::-ms-input-placeholder {
-    color: text-neutrals-gray3;
+input::placeholder,
+input::-webkit-input-placeholder,
+input:-ms-input-placeholder{
+	@apply text-neutrals-gray3 font-light;
 }
 
 input:focus {

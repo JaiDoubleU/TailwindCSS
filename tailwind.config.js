@@ -1,6 +1,7 @@
+const themeSwapper = require('tailwindcss-theme-swapper')
+
 module.exports = {
   purge: [],
-
   theme: {
     screens: {
       sm: '640px',

@@ -23612,6 +23612,8 @@ body > .content {
   width: 65px;
 }
 
+/* 	Buttons */
+
 button {
   font-weight: 400;
   border-radius: 3px;
@@ -23735,6 +23737,8 @@ button.red:hover {
   background-color: rgba(255, 84, 68, var(--bg-opacity));
 }
 
+/* 	Inputs */
+
 input {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -23764,16 +23768,13 @@ input {
   padding-bottom: 0.5rem;
 }
 
-input::-moz-placeholder{
-  color: text-neutrals-gray3;
-}
-
+input::placeholder,
+input::-webkit-input-placeholder,
 input:-ms-input-placeholder{
-  color: text-neutrals-gray3;
-}
-
-input::placeholder{
-  color: text-neutrals-gray3;
+  --text-opacity: 1;
+  color: #323035;
+  color: rgba(50, 48, 53, var(--text-opacity));
+  font-weight: 300;
 }
 
 input:focus {
