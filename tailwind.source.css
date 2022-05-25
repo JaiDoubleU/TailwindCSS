@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+html, body {
+	@apply w-full h-full pb-10 bg-neutrals-gray4 text-white;
+}
+body > .content {
+	@apply h-auto w-full m-3 p-3 pb-12 bg-neutrals-gray5;
+}
+
+.swatch { 
+ 	@apply shadow-xs text-sm text-center inline-block align-middle p-1 pt-2 mb-1;
+ 	height: 50px;                
+	width: 65px;
+}
+
+button {
+	@apply font-normal rounded-sm py-1 px-4;
+}
+button.small {
+	@apply font-normal rounded-sm py-0 px-2;
+}
+button.large {
+	@apply font-normal rounded-sm py-2 px-4;
+}
+
+button.primary {
+	@apply bg-primary-dark text-white ;
+}
+button.primary:hover { 
+	@apply text-white bg-primary-DEFAULT; 
+}
+
+button.default {
+	@apply bg-neutrals-gray7 border-neutrals-gray8 text-white;
+}
+button.default:hover { 
+	@apply text-white bg-neutrals-gray9; 
+}
+
+button.blue {
+	@apply bg-blue-dark font-normal text-white;
+}
+button.blue:hover { 
+	@apply text-white bg-blue-DEFAULT; 
+}
+
+button.yellow {
+	@apply bg-warning-DEFAULT font-normal text-black;
+}
+button.yellow:hover { 
+	@apply text-black bg-warning-light;
+}
+
+button.red {
+	@apply bg-danger-dark font-normal text-white;
+}
+button.red:hover { 
+	@apply text-white bg-danger-DEFAULT; 
+}
+
+input {
+	@apply px-3 py-1 pr-10 text-neutrals-white bg-neutrals-gray4 border-neutrals-gray5 rounded border  shadow outline-none  w-full;
+}
+.leading-snug ~ input {
+	@apply pl-10 py-2;
+}
+
+input::placeholde,
+input::-ms-input-placeholder {
+    color: text-neutrals-gray3;
+}
+
+input:focus {
+	@apply outline-none;
+}
