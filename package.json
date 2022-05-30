@@ -1,5 +1,5 @@
 {
-  "name": "CuteTailwind",
+  "name": "tailwind",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "postcss-cli": "^7.1.1",
-    "tailwindcss": "^1.6.2"
+    "tailwindcss": "^1.6.2",
   },
   "dependencies": {
     "tota11y": "^0.1.6"
