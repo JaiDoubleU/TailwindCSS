@@ -1,0 +1,56 @@
+
+ button {
+      border-color: theme('colors.neutrals.gray3');
+      border-width: theme('borderWidth.DEFAULT');
+      border-style: solid;
+      padding: theme('spacing.2') theme('spacing.20');
+ }
+
+/* 
+	button {
+		@apply font-normal rounded-sm py-1 px-4;
+	}
+
+	button.small {
+		@apply font-normal rounded-sm py-0 px-2;
+	}
+
+	button.large {
+		@apply font-normal rounded-sm py-2 px-4;
+	}
+
+	button.primary {
+		@apply bg-primary-dark text-white ;
+	}
+	button.primary:hover { 
+		@apply text-white bg-primary; 
+	}
+
+	button.default {
+		@apply bg-neutrals-gray7 border-neutrals-gray8 text-white;
+	}
+	button.default:hover { 
+		@apply text-white bg-neutrals-gray9; 
+	}
+
+	button.blue {
+		@apply bg-blue-dark font-normal text-white;
+	}
+	button.blue:hover { 
+		@apply text-white bg-blue; 
+	}
+
+	button.yellow {
+		@apply bg-warning font-normal text-black;
+	}
+	button.yellow:hover { 
+		@apply text-black bg-warning-light;
+	}
+
+	button.red {
+		@apply bg-danger-dark font-normal text-white;
+	}
+	button.red:hover { 
+		@apply text-white bg-danger; 
+	} */
+

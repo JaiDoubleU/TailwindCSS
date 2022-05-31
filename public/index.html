@@ -1,52 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en" x-data="{'darkMode': false}" :class="{'dark': darkMode === true}">
 
 <head>
     <meta charset="utf-8">
     <title>TailwindCSS Test Page</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700&family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap">
-
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rqn26AG5Pj86AF4SO72RK5fyefcQ/x32DNQfChxWvbXIyXFePlEktwD18fEz+kQU" crossorigin="anonymous">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="build/tailwind.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </head>
 
-<body class="text-sans mx-auto h-full p-1 mb-4 dark">
-    <div class="content">
-        <p class="flex justify-between text-xl dark:text-neutrals-white light:text-neutrals-black" >
-            <span class="left text-left">TailwindCSS Test Page</span>
-            <span class="right flex items-center" x-data="{toggle: false, toggle2: false}">
-                    <!-- <spad class="toggle color">
-                        <input id="check1" class="toggle-checkbox hidden" type="checkbox" checked onchange="setTheme()">
-                        <label for="check1" class="toggle-label inline-block w-12 h-6 bg-neutrals-black rounded-full transition-color duration-150 ease-out"></label>
-                    </spad -->
-                    <span id="themeLabel" class="relative text-base  pt-3 pr-3 place-self-start">Dark Mode</span>
+<body x-data="{'darkMode': false}" x-init="
+         darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark': darkMode === true}" class="text-sans mx-auto h-full mb-4">
+    <div class="content p-1 bg-neutrals-gray13 dark:bg-neutrals-gray6 text-neutrals-black dark:text-neutrals-gray12">
 
-                    <span class="toggle colour place-self-end align-content-end">
-                        <input id="check3" class="toggle-checkbox hidden" type="checkbox" checked onchange="setTheme()">
-                        <label for="check3" class="toggle-label block w-12 h-6 rounded-full transition-color duration-150 ease-out"></label>
-                    </span>
-            </span>
+        <p class="flex justify-between text-xl dark:text-neutrals-white light:text-neutrals-black">
+            <span class="left text-left">TailwindCSS Test Page <span :value="darkMode"></span></span>
+            
+             <input type="checkbox" id="switch-button" checked @change="darkMode = !darkMode;">
+             <label for="switch-button">
+                 <i class="fas fa-sun"></i>
+                 <i class="fas fa-moon"></i>
+             </label>
         </p>
-        <div>
-  <!-- the text will be black -->
-  <p class="text-blue-light dark:text-black light:text-white">Black text when dark</p>
-</div>
 
-<div class="">
-  <!-- the text will be white -->
-  <p class="text-red-100  dark:text-white light:text-dark">White text when dark</p>
-</div>
         <p class="p-1 m-1">
-            <div class="text-xs font-thin border-b border-gray-500 border-w1 pt-1 mb-1">Colors</div>
+            <div class="text-xs text-neutrals-black dark:text-neutrals-gray12 font-light pb-1 border-b border-neutrals-gray1 dark:border-neutrals-gray9 border-w1 pt-1 mb-1">Colors</div>
         </p>
 
-        <!-- Neutral Palette-->
-        <p class="p-1 mb-1">
-            <div class="text-xs font-thin pb-1">Neutrals</div>
+        <!-- Neutral Colors-->
+        <p class="p-1 mb-1 text-neutrals-black dark:text-neutrals-gray12 font-light">
+            <div class="text-xs text-neutrals-black dark:text-neutrals-gray12 font-light pb-1">Neutrals</div>
 
             <span class="swatch text-white bg-neutrals-black">Black</span>
             <span class="swatch text-white bg-neutrals-gray1">Gray 1</span>
@@ -67,49 +57,48 @@
             <span class="swatch text-black bg-neutrals-white">White</span>
         </p>
 
-        <!-- Brand Palette-->
+        <!-- Brand Colors-->
         <p class="p-1 mb-1">
-            <div class="text-xs font-thin  pb-1">Brand Colors</div>
-
+            <div class="text-xs text-neutrals-black dark:text-neutrals-gray12 font-light pb-1">Brand Colors</div>
             <span class="swatch text-black bg-primary-light">Primary Light</span>
-            <span class="swatch text-black bg-primary-DEFAULT">Primary</span>
+            <span class="swatch text-black bg-primary">Primary</span>
             <span class="swatch bg-primary-dark">Primary Dark</span>
         </p>
 
-        <!-- Contextual Color Palette-->
+        <!-- Contextual Colors-->
         <p class="p-1 mb-1">
             <div class="text-xs font-thin  pb-1">Contextual Colors</div>
 
             <span class="swatch text-black bg-success-light">Success Light</span>
-            <span class="swatch text-black bg-success-DEFAULT">Success</span>
+            <span class="swatch text-black bg-success">Success</span>
             <span class="swatch bg-success-dark">Success Dark</span>
 
             <span class="swatch text-black bg-info-light">Info Light</span>
-            <span class="swatch text-white bg-info-DEFAULT">Info</span>
+            <span class="swatch text-white bg-info">Info</span>
             <span class="swatch bg-info-dark">Info Dark</span>
 
             <span class="swatch text-black bg-warning-light">Warning Light</span>
-            <span class="swatch text-black bg-warning-DEFAULT">Warning</span>
+            <span class="swatch text-black bg-warning">Warning</span>
             <span class="swatch bg-warning-dark">Warning Yellow</span>
 
             <span class="swatch text-black bg-danger-light">Danger Light</span>
-            <span class="swatch text-black bg-danger-DEFAULT">Danger</span>
+            <span class="swatch text-black bg-danger">Danger</span>
             <span class="swatch bg-danger-dark">Danger Dark</span>
         </p>
 
-        <!-- Accent Color Paleteed-->
+        <!-- Accent Colors-->
         <p class="p-1 m-1">
             <div class="text-xs font-thin pb-1">Accent Colors</div>
             <span class="swatch text-black bg-blue-light">Light Blue</span>
-            <span class="swatch bg-blue-DEFAULT">Blue</span>
+            <span class="swatch bg-blue">Blue</span>
             <span class="swatch bg-blue-dark">Dark Blue</span>
 
             <span class="swatch text-black bg-orange-light">Light Orange</span>
-            <span class="swatch bg-orange-DEFAULT">Orange</span>
+            <span class="swatch bg-orange">Orange</span>
             <span class="swatch bg-orange-dark">Dark Orange</span>
 
             <span class="swatch text-black bg-purple-light">Light Purple</span>
-            <span class="swatch bg-purple-DEFAULT">Purple</span>
+            <span class="swatch bg-purple">Purple</span>
             <span class="swatch bg-purple-dark">Dark Purple</span>
         </p>
 
@@ -121,43 +110,43 @@
         <p class="p-1 mb-1">
             <div class="text-xs font-thin pb-1">Regular Buttons</div>
 
-            <button class="default">Default Button</button>
-            <button class="primary">Primary Button</button>
+            <button class="btn-default">Default Button</button>
+            <button class="btn-primary">Primary Button</button>
 
-            <button class="blue">Blue Button</button>
-            <button class="yellow">Yellow Button</button>
-            <button class="red">Red Button</button>
+            <button class="btn-blue">Blue Button</button>
+            <button class="btn-yellow">Yellow Button</button>
+            <button class="btn-red">Red Button</button>
         </p>
 
         <p class="p-1 mb-1">
-            <div class="text-xs font-thin pb-1">Small Buttons</div>
+        <div class="text-xs font-thin pb-1">Small Buttons</div>
 
-            <button class="default small">Default Button</button>
-            <button class="primary small">Primary Button</button>
+        <button class="btn-default small">Default Button</button>
+        <button class="btn-primary small">Primary Button</button>
 
-            <button class="blue small">Blue Button</button>
-            <button class="yellow small">Yellow Button</button>
-            <button class="red small">Red Button</button>
+        <button class="btn-blue small">Blue Button</button>
+        <button class="btn-yellow small">Yellow Button</button>
+        <button class="btn-red small">Red Button</button>
         </p>
 
         <p class="p-1 mb-1">
-            <div class="text-xs font-thin pb-1">Large Buttons</div>
+        <div class="text-xs font-thin pb-1">Large Buttons</div>
 
-            <button class="default large">Default Button</button>
-            <button class="primary large">Primary Button</button>
+        <button class="btn-default large">Default Button</button>
+        <button class="btn-primary large">Primary Button</button>
 
-            <button class="blue large">Blue Button</button>
-            <button class="yellow large">Yellow Button</button>
-            <button class="red large">Red Button</button>
+        <button class="btn-blue large">Blue Button</button>
+        <button class="btn-yellow large">Yellow Button</button>
+        <button class="btn-red large">Red Button</button>
         </p>
 
         <!-- Inputs -->
         <p class="p-1 m-1">
-            <div class="text-xs font-thin border-b border-gray-500 border-w1 pt-1 mb-1">Inputs</div>
+        <div class="text-xs font-thin border-b border-gray-500 border-w1 pt-1 mb-1">Inputs</div>
         </p>
 
         <p class="p-1 mb-1">
-            <div class="text-sm font-thin pb-1">Default Inputs</div>
+        <div class="text-sm font-thin pb-1">Default Inputs</div>
         </p>
 
         <p class="relative flex w-full flex-wrap items-stretch mb-5">
@@ -189,7 +178,7 @@
                         d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 10.12,16.5 12,16.5C13.88,16.5 16.5,17.38 16.93,18.28C15.57,19.36 13.86,20 12,20C10.14,20 8.43,19.36 7.07,18.28M18.36,16.83C16.93,15.09 13.46,14.5 12,14.5C10.54,14.5 7.07,15.09 5.64,16.83C4.62,15.5 4,13.82 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,13.82 19.38,15.5 18.36,16.83M12,6C10.06,6 8.5,7.56 8.5,9.5C8.5,11.44 10.06,13 12,13C13.94,13 15.5,11.44 15.5,9.5C15.5,7.56 13.94,6 12,6M12,11A1.5,1.5 0 0,1 10.5,9.5A1.5,1.5 0 0,1 12,8A1.5,1.5 0 0,1 13.5,9.5A1.5,1.5 0 0,1 12,11Z" />
                 </svg>
 
-                <div class="text-xs text-gray-400/80 hover:text-gray-400">Fullstack Developer</div>
+            <div class="text-xs text-gray-400/80 hover:text-gray-400">Fullstack Developer</div>
             </p>
 
             <!-- Badge Location -->
@@ -200,7 +189,7 @@
                         d="M12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9A5,5 0 0,0 12,4Z" />
                 </svg>
 
-                <div class="text-sm text-neutrals-white ">Istanbul</div>
+            <div class="text-sm text-neutrals-white ">Istanbul</div>
             </p>
 
             <!-- Badge Email-->
@@ -211,31 +200,34 @@
                         d="M12,15C12.81,15 13.5,14.7 14.11,14.11C14.7,13.5 15,12.81 15,12C15,11.19 14.7,10.5 14.11,9.89C13.5,9.3 12.81,9 12,9C11.19,9 10.5,9.3 9.89,9.89C9.3,10.5 9,11.19 9,12C9,12.81 9.3,13.5 9.89,14.11C10.5,14.7 11.19,15 12,15M12,2C14.75,2 17.1,3 19.05,4.95C21,6.9 22,9.25 22,12V13.45C22,14.45 21.65,15.3 21,16C20.3,16.67 19.5,17 18.5,17C17.3,17 16.31,16.5 15.56,15.5C14.56,16.5 13.38,17 12,17C10.63,17 9.45,16.5 8.46,15.54C7.5,14.55 7,13.38 7,12C7,10.63 7.5,9.45 8.46,8.46C9.45,7.5 10.63,7 12,7C13.38,7 14.55,7.5 15.54,8.46C16.5,9.45 17,10.63 17,12V13.45C17,13.86 17.16,14.22 17.46,14.53C17.76,14.84 18.11,15 18.5,15C18.92,15 19.27,14.84 19.57,14.53C19.87,14.22 20,13.86 20,13.45V12C20,9.81 19.23,7.93 17.65,6.35C16.07,4.77 14.19,4 12,4C9.81,4 7.93,4.77 6.35,6.35C4.77,7.93 4,9.81 4,12C4,14.19 4.77,16.07 6.35,17.65C7.93,19.23 9.81,20 12,20H17V22H12C9.25,22 6.9,21 4.95,19.05C3,17.1 2,14.75 2,12C2,9.25 3,6.9 4.95,4.95C6.9,3 9.25,2 12,2Z" />
                 </svg>
 
-                <div class="text-xs text-gray-400/80 hover:text-gray-400">who@am.i</div>
+            <div class="text-xs text-gray-400/80 hover:text-gray-400">who@am.i</div>
             </p>
         </div>
 
     </div>
     <script src="../node_modules/tota11y/build/tota11y.min.js"></script>
     <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            // document.documentElement.classList.add('dark')
+        } else {
+            // document.documentElement.classList.remove('dark')
+        }
+
+        // Whenever the user explicitly chooses light mode
+        localStorage.theme = 'light'
+
+        // Whenever the user explicitly chooses dark mode
+        localStorage.theme = 'dark'
+
+        // Whenever the user explicitly chooses to respect the OS preference
+        //localStorage.removeItem('theme')
+
         const isDarkSet = localStorage.theme === 'dark';
         const isThemeStored = 'theme' in localStorage;
+        console.error('is theme stored? ' + isThemeStored);
         const isDarkPrefered = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        console.error('isDarkPrefered? ' +isDarkPrefered +', is theme stored? ' +isThemeStored +', is dark set? ' +isDarkSet);
-        if (isDarkSet || (!isThemeStored && isDarkPrefered)) {
-            console.error('adding dark class to document');
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.add('light')
-        }
-
-        function setTheme() {
-                document.documentElement.classList.toggle('dark');
-                document.documentElement.classList.toggle('light');
-
-                document.body.classList.toggle('dark');
-                document.body.classList.toggle('light');
-        }
+        console.error('isDarkPrefered? ' + isDarkPrefered + ', is theme stored? ' + isThemeStored + ', is dark set? ' + isDarkSet);
     </script>
 </body>
 
